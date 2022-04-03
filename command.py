@@ -99,7 +99,7 @@ class Maincmd(commands.Cog):
         embed= discord.Embed(
             title= "-> src in github",
             color= 0x6dc1d1,
-            url= "https://discord.gg/daze"
+            url= "https://github.com/ennui-em/QANOU/tree/main"
             )
         embed.add_field(name= "Customers",
                         value= f"Servers **:** `{str(len(self.bot.guilds))}`\n\
