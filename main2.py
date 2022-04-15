@@ -2,13 +2,14 @@ import discord
 import datetime
 from discord.ext import commands
 
-developer= ID
-Developer= ID
+developer=901518724098568223
+Developer=956042267221721119
 dt_now= datetime.datetime.now()
 
 class Main2(commands.Cog):
     def __init__(self, bot):
         self.bot= bot
+    
     
     @commands.Cog.listener()
     async def on_ready(self):
@@ -19,13 +20,14 @@ class Main2(commands.Cog):
         embed.set_footer(text=f" {dt_now.month}月 {dt_now.day}日 {dt_now.hour} : {dt_now.minute} - {dt_now.minute}秒")
         await user.send(embed=embed)
     
-    async def on_message(self, message):
-        if message.author.bot:
-            return
-        if message.content=="なう" or "now":
-          """未開発（めんどくさい）"""
-            await message.reply(   mention_author= False)
-            
+    
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        
+        await member.send('やあ')
+    
+    
+    
     #Errorhandling
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
@@ -57,6 +59,11 @@ class Main2(commands.Cog):
             embed = discord.Embed(title="-CheckFailure", \
             description=f": defined", timestamp=ctx.message.created_at, color=0xff0000)
             await ctx.send(embed=embed)
+        elif isinstance(error, commands.CommandOnCooldown):
+            retry_after_int = int(error.retry_after)
+            retry_minute = retry_after_int // 60
+            retry_second = retry_after_int % 60
+            return await ctx.send(f"クールダウン中。残り{retry_minute}分{retry_second}秒")
         else:
             raise error
     
