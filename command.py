@@ -241,7 +241,7 @@ class Maincmd(commands.Cog):
     
     @commands.command(aliases=["src"])
     async def source(self, ctx):
-        embed=discord.Embed(title="-> src in my github",url= "https://github.com/ennui-em/QANOU/tree/main",color= 0x6dc1d1)
+        embed=discord.Embed(title="-> src in my github",url= "https://github.com/ennui-em/Tohka/tree/main",color= 0x6dc1d1)
         await ctx.send(embed=embed)
     
     
